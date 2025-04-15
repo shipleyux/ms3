@@ -22,6 +22,7 @@ from blog.views import post_list  #  main view for the home page
 urlpatterns = [
     path('', post_list, name='home'),  # Home page that uses the post_list view
     path('admin/', admin.site.urls),  # Admin URL
-    path('accounts/', include('allauth.urls')),  # Include allauth URLs for login, registration, etc.
+    path('accounts/', include('allauth.urls')),# Include allauth URLs for login, registration, etc.
+    path('', include('blog.urls')),  
 ]
 

@@ -31,7 +31,7 @@ SECRET_KEY = 'django-insecure-6c#yx)pr)@qzor87=bw-ban6bgykfg&gwcv3qv=7jzaz1+l+&$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ms3-blog-17789f37c9f8.herokuapp.com', 'localhost']
+ALLOWED_HOSTS = ['ms3-blog-17789f37c9f8.herokuapp.com', '127.0.0.1', 'localhost']
 
 
 
@@ -90,12 +90,26 @@ WSGI_APPLICATION = 'blog_project.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ms3_local',
+        'USER': 'postgres',
+        'PASSWORD': '',  
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+
 
 import dj_database_url
 
 DATABASES = {
-    'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
+    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
 }
+
+
 
 
 

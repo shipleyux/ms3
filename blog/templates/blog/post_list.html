@@ -1,9 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>My Blog</title>
-</head>
-<body>
+{% extends "blog/base.html" %}
+
+{% block title %}Sober Blog{% endblock %}
+
+{% block content %}
   <h1>Blog Posts</h1>
   {% for post in posts %}
     <div>
@@ -12,6 +11,8 @@
       <small>Posted on {{ post.created_at }}</small>
     </div>
     <hr>
+  {% empty %}
+    <p>No posts found.</p>
   {% endfor %}
-</body>
-</html>
+{% endblock %}
+

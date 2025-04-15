@@ -8,6 +8,7 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = ['username', 'email', 'password1', 'password2']
+
 from django.shortcuts import render, redirect
 from .forms import RegisterForm
 from django.contrib import messages
@@ -22,4 +23,13 @@ def register(request):
     else:
         form = RegisterForm()
     return render(request, 'blog/register.html', {'form': form})
+
+from django import forms
+from .models import Post
+
+class PostForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ['title', 'content']
+
 
