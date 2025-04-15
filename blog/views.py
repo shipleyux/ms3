@@ -40,4 +40,14 @@ def post_edit(request, post_id):
 def post_detail(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     return render(request, 'blog/post_detail.html', {'post': post})
+
+from django.shortcuts import redirect
+
+def post_delete(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
     
+    if request.method == 'POST':
+        post.delete()
+        return redirect('post_list')
+    
+    return render(request, 'blog/post_confirm_delete.html', {'post': post})
