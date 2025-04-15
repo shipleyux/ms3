@@ -165,5 +165,6 @@ MIDDLEWARE = (
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
 )
+LOGIN_REDIRECT_URL = '/'
 
 SITE_ID = 1
