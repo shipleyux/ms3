@@ -31,7 +31,8 @@ SECRET_KEY = 'django-insecure-6c#yx)pr)@qzor87=bw-ban6bgykfg&gwcv3qv=7jzaz1+l+&$
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['.herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = ['ms3-blog-17789f37c9f8.herokuapp.com', 'localhost']
+
 
 
 
@@ -46,6 +47,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'cloudinary_storage',
     'cloudinary',
+   
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
     'blog',
 
 ]
@@ -133,3 +139,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+SITE_ID = 1
