@@ -18,8 +18,12 @@
 {% endif %}
 
       <a href="{% url 'post_list' %}">Home</a> |
-      <a href="{% url 'account_signup' %}">Register</a> |
       {% if user.is_authenticated %}
+      <span>Welcome, {{ user.username }}!</span>
+      <a href="{% url 'account_logout' %}">Logout</a>
+    {% else %}
+      <a href="{% url 'account_login' %}">Login</a>
+      <a href="{% url 'account_signup' %}">Register</a>
     <a href="{% url 'post_create' %}">New Post</a>
 {% endif %}
     </nav>
