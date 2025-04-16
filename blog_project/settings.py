@@ -146,8 +146,12 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -170,11 +174,15 @@ MIDDLEWARE = (
 # Modern Allauth settings (new-style as of 2024+)
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
-ACCOUNT_LOGIN_METHODS = {"username"}  # allow login by username only
-ACCOUNT_SIGNUP_FIELDS = ["username", "password1", "password2"]  # no email required
+# Only use username for login
+ACCOUNT_LOGIN_METHODS = {"username"}
 
-ACCOUNT_EMAIL_REQUIRED = False  # still needed for legacy behavior
+# Only collect username and password during signup
+ACCOUNT_SIGNUP_FIELDS = ["username", "password1", "password2"]
+
 LOGIN_REDIRECT_URL = "/"
+
+
 
 
 
