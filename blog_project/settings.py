@@ -165,6 +165,18 @@ MIDDLEWARE = (
     # Add the account middleware:
     "allauth.account.middleware.AccountMiddleware",
 )
-LOGIN_REDIRECT_URL = '/'
+
+
+# Modern Allauth settings (new-style as of 2024+)
+ACCOUNT_EMAIL_VERIFICATION = "none"
+
+ACCOUNT_LOGIN_METHODS = {"username"}  # allow login by username only
+ACCOUNT_SIGNUP_FIELDS = ["username", "password1", "password2"]  # no email required
+
+ACCOUNT_EMAIL_REQUIRED = False  # still needed for legacy behavior
+LOGIN_REDIRECT_URL = "/"
+
+
+
 
 SITE_ID = 1
