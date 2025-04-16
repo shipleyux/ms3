@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from .models import Post
 from .forms import PostForm 
 
@@ -14,15 +15,15 @@ def post_create(request):
     if request.method == 'POST':
         form = PostForm(request.POST)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)  # don't save to DB yet
+            post.author = request.user      # assign the logged-in user as the author
+            post.save()  
+            messages.success(request, "Post created successfully!")                    
             return redirect('post_list')
     else:
         form = PostForm()
-    return render(request, 'blog/post_form.html', {'form': form})    
+    return render(request, 'blog/post_form.html', {'form': form})
 
-from django.shortcuts import get_object_or_404
-from .models import Post
-from .forms import PostForm
 
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
@@ -48,6 +49,13 @@ def post_delete(request, post_id):
     
     if request.method == 'POST':
         post.delete()
+        messages.success(request, "Post deleted!")
         return redirect('post_list')
     
     return render(request, 'blog/post_confirm_delete.html', {'post': post})
+from django.contrib.auth.decorators import login_required
+
+@login_required
+def create_post(request):
+    if request.user != post.author:
+        return HttpResponseForbidden()

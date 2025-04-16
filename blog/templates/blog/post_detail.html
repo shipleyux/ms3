@@ -4,7 +4,21 @@
   <h2>{{ post.title }}</h2>
   <p>{{ post.content|linebreaks }}</p>
 
-  <a href="{% url 'post_edit' post.id %}">Edit</a>
-  <a href="{% url 'post_delete' post.id %}">Delete</a>
+
+  <!--  Debug lines below -->
+  <p> Logged in as: {{ user }}</p>
+  <p> Post author: {{ post.author }}</p>
+  {% if user == post.author %}
+    <p>Does user = author? TRUE</p>
+  {% else %}
+    <p>Does user = author? FALSE</p>
+  {% endif %}
+
+  {% if user == post.author %}
+  <a href="{% url 'post_edit' post.pk %}">Edit</a>
+  <a href="{% url 'post_delete' post.pk %}">Delete</a>
+  
+{% endif %}
+
 
 {% endblock %}
