@@ -26,7 +26,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-6c#yx)pr)@qzor87=bw-ban6bgykfg&gwcv3qv=7jzaz1+l+&$'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -88,25 +88,13 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blog_project.wsgi.application'
 
 
-# Database
-# https://docs.djangoproject.com/en/4.2/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ms3_local',
-        'USER': 'postgres',
-        'PASSWORD': '',  
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
-
 
 
 import dj_database_url
-
+DATABASE_URL = os.environ.get("DATABASE_URL")
+print(f"DATABASE_URL is: {DATABASE_URL}")
 DATABASES = {
-    'default': dj_database_url.config(default='sqlite:///db.sqlite3')
+    'default': dj_database_url.parse(DATABASE_URL)
 }
 
 
