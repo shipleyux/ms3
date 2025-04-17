@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 # Blog Post model
 class Post(models.Model):
@@ -19,20 +21,16 @@ class Profile(models.Model):
     def __str__(self):
         return self.display_name or self.user.email
 
-
-from django.db.models.signals import post_save
-from django.dispatch import receiver
-
+# Automatically create or update profile on user creation
 @receiver(post_save, sender=User)
-def create_user_profile(sender, instance, created, **kwargs):
+def create_or_update_user_profile(sender, instance, created, **kwargs):
     if created:
         Profile.objects.create(user=instance)
+    else:
+        instance.profile.save()
 
 @receiver(post_save, sender=User)
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
-
-
-
-
+ 
 
