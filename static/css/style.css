@@ -29,4 +29,16 @@ body {
   .site-nav a:hover {
     text-decoration: underline;
   }
-   
+  
+  .auth-wrapper {
+    min-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .auth-card {
+    max-width: 400px;
+    width: 100%;
+  }
+  
