@@ -1,24 +1,23 @@
-{% extends "blog/base.html" %}
+{% extends 'blog/base.html' %}
 
 {% block content %}
-  <h2>{{ post.title }}</h2>
-  <p>{{ post.content|linebreaks }}</p>
+  <article class="post-detail">
+    <p class="meta">
+    {{ post.created_at|date:"F j, Y" }}<br>
+    🖊️ Written by: {{ post.author.profile.display_name|default:post.author.email }}
 
+    </p>
 
-  <!--  Debug lines below -->
-  <p> Logged in as: {{ user }}</p>
-  <p> Post author: {{ post.author }}</p>
-  {% if user == post.author %}
-    <p>Does user = author? TRUE</p>
-  {% else %}
-    <p>Does user = author? FALSE</p>
-  {% endif %}
+    <h2>{{ post.title }}</h2>
+    <div class="post-body">
+      <p>{{ post.content|linebreaks }}</p>
+    </div>
 
-  {% if user == post.author %}
-  <a href="{% url 'post_edit' post.pk %}">Edit</a>
-  <a href="{% url 'post_delete' post.pk %}">Delete</a>
-  
-{% endif %}
-
-
+    {% if user == post.author %}
+      <div class="post-actions">
+        <a class="btn" href="{% url 'post_edit' post.id %}">Edit</a>
+        <a class="btn danger" href="{% url 'post_delete' post.id %}">Delete</a>
+      </div>
+    {% endif %}
+  </article>
 {% endblock %}
