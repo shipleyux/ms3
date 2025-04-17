@@ -6,12 +6,11 @@ class Post(models.Model):
     content = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts')
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
     display_name = models.CharField(max_length=100, blank=True)
 
     def __str__(self):
         return self.title
-        return self.display_name or self.user.email
+
 
 
 
