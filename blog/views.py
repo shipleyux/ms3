@@ -6,9 +6,8 @@ from .forms import PostForm
 
 
 def post_list(request):
-    post_list = Post.objects.all()  
+    post_list = Post.objects.all().order_by('-created_at')
     paginator = Paginator(post_list, 3)  # 3 posts per page
-
     page_number = request.GET.get('page', 1)
     posts = paginator.get_page(page_number)  # Handles out-of-range pages
 
