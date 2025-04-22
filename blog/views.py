@@ -1,10 +1,17 @@
+from django.core.paginator import Paginator
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
 from .models import Post
 from .forms import PostForm 
 
+
 def post_list(request):
-    posts = Post.objects.all()
+    post_list = Post.objects.all()  
+    paginator = Paginator(post_list, 3)  # 3 posts per page
+
+    page_number = request.GET.get('page', 1)
+    posts = paginator.get_page(page_number)  # Handles out-of-range pages
+
     return render(request, 'blog/post_list.html', {'posts': posts})
 
 def post_detail(request, post_id):
