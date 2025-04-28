@@ -19,6 +19,9 @@
       <div class="card-footer text-muted">
         Posted by {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}
         <p>Last updated: {{ post.updated }}</p>
+        <p>{{ post.comments.count }} Comments</p>
+
+
 
       </div>
     </div>
