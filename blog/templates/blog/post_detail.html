@@ -13,6 +13,32 @@
     <div class="post-body">
       <p>{{ post.content|linebreaks }}</p>
     </div>
+    <h2>Comments</h2>
+    {% if comments %}
+      {% for comment in comments %}
+        <div>
+          <strong>{{ comment.name }}</strong> on {{ comment.created|date:"M d, Y" }} said:
+          <p>{{ comment.body }}</p>
+        </div>
+      {% endfor %}
+    {% else %}
+      <p>No comments yet.</p>
+    {% endif %}
+    
+    <hr>
+    
+    <h2>Leave a Comment</h2>
+    
+    {% if new_comment %}
+      <p><strong>Thank you for your comment!</strong> It has been posted.</p>
+    {% else %}
+      <form method="post">
+        {% csrf_token %}
+        {{ comment_form.as_p }}
+        <button type="submit">Post Comment</button>
+      </form>
+    {% endif %}
+
 
     {% if user == post.author %}
       <div class="post-actions">
