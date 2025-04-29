@@ -170,6 +170,8 @@ ACCOUNT_SIGNUP_FIELDS = ["username", "password1", "password2"]
 
 LOGIN_REDIRECT_URL = "/"
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 

@@ -71,7 +71,7 @@ def post_detail(request, pk):
 @login_required
 def post_create(request):
     if request.method == 'POST':
-        form = PostForm(request.POST)
+        form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
             post.author = request.user
@@ -90,15 +90,18 @@ def post_edit(request, pk):
         return HttpResponseForbidden()
 
     if request.method == 'POST':
-        form = PostForm(request.POST, instance=post)
+        form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
-            form.save()
+            post = form.save(commit=False)
+            post.author = request.user  # ✅ Ensure author is always set
+            post.save()
             messages.success(request, "Post updated successfully!")
             return redirect('post_detail', pk=post.pk)
     else:
         form = PostForm(instance=post)
 
     return render(request, 'blog/post_form.html', {'form': form})
+
 
 @login_required
 def post_delete(request, pk):

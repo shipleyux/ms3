@@ -6,7 +6,18 @@
     <h1 class="display-4">Welcome to Sober Spaces</h1>
     <p class="lead text-muted">Read the latest posts from our awesome writers.</p>
 
-
+    <nav class="nav justify-content-center flex-wrap gap-2">
+      <a class="btn btn-outline-dark {% if not active_category %}active{% endif %}" href="{% url 'post_list' %}">
+        All
+      </a>
+      {% for category in categories %}
+        <a class="btn btn-outline-dark {% if active_category and active_category.id == category.id %}active{% endif %}"
+           href="{% url 'posts_by_category' category.id %}">
+          {{ category.name }}
+        </a>
+      {% endfor %}
+    </nav>
+    
   </div>
 
   {% if featured_post %}
@@ -15,6 +26,10 @@
       {% if featured_post.image %}
         <img src="{{ featured_post.image.url }}" class="card-img-top rounded-top" alt="{{ featured_post.title }}">
       {% endif %}
+        <div class="mb-4">
+ 
+  </div>
+      
       <div class="card-body">
         <span class="badge bg-dark text-uppercase mb-2">Latest</span>
 
@@ -31,19 +46,7 @@
 {% endif %}
 
 
-  <div class="mb-4">
-    <nav class="nav nav-pills justify-content-center flex-wrap gap-2">
-      <a class="nav-link {% if not active_category %}active{% endif %}" href="{% url 'post_list' %}">
-        All
-      </a>
-      {% for category in categories %}
-        <a class="nav-link {% if active_category and active_category.id == category.id %}active{% endif %}" 
-           href="{% url 'posts_by_category' category.id %}">
-          {{ category.name }}
-        </a>
-      {% endfor %}
-    </nav>
-  </div>
+  
   
   <div class="row">
     {% for post in posts %}
@@ -64,11 +67,15 @@
               
               <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
             </h5>
+            {% if post.image %}
+  <img src="{{ post.image.url }}" class="card-img-top rounded-top" alt="{{ post.title }}">
+{% endif %}
+
             <p class="card-text">{{ post.content|truncatewords:30 }}</p>
             <p class="text-muted small mb-1">
          
             
-            <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-primary">Read more</a>
+            <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-dark">Read more</a>
           </div>
           <div class="card-footer text-muted small d-flex flex-column">
             <div>Posted by {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}</div>

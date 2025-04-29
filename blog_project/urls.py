@@ -18,6 +18,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include  #  include here to handle other app URLs
 from blog.views import post_list  #  main view for the home page
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('', post_list, name='home'),  # Home page that uses the post_list view
@@ -26,3 +28,5 @@ urlpatterns = [
     path('', include('blog.urls')),  
 ]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,11 +1,16 @@
-{% extends 'blog/base.html' %}
+{% extends "blog/base.html" %}
+{% load static %}
 
 {% block content %}
-  <h2>New Post</h2>
-  <form method="POST">
+<div class="container py-5">
+  <h1 class="mb-4">Create / Edit Post</h1>
+
+  <form method="post" enctype="multipart/form-data">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Save</button>
+
+    <button type="submit" class="btn btn-dark">Save Post</button>
   </form>
-  
+</div>
 {% endblock %}
+
