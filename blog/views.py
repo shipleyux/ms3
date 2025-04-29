@@ -93,7 +93,7 @@ def post_edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user  # ✅ Ensure author is always set
+            post.author = request.user  #Ensure author is always set
             post.save()
             messages.success(request, "Post updated successfully!")
             return redirect('post_detail', pk=post.pk)
