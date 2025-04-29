@@ -104,4 +104,22 @@ body {
     text-decoration: underline;
   }
   
+  .featured-img {
+    height: 250px; /* or 200px if needed */
+    object-fit: cover;
+    width: 100%;
+    display: block;
+    border-top-left-radius: 1rem;
+    border-top-right-radius: 1rem;
+  }
+  
+
+  .post-card-img {
+    max-height: 250px;
+    object-fit: cover;
+    width: 100%;
+    display: block;
+  }
+  
+  
   

@@ -11,72 +11,57 @@
         All
       </a>
       {% for category in categories %}
-        <a class="btn btn-outline-dark {% if active_category and active_category.id == category.id %}active{% endif %}"
-           href="{% url 'posts_by_category' category.id %}">
+        <a class="btn btn-outline-dark {% if active_category and active_category.id == category.id %}active{% endif %}" href="{% url 'posts_by_category' category.id %}">
           {{ category.name }}
         </a>
       {% endfor %}
     </nav>
-    
   </div>
 
   {% if featured_post %}
-  <div class="mb-5">
-    <div class="card border-0 shadow-lg rounded-4 bg-light">
-      {% if featured_post.image %}
-        <img src="{{ featured_post.image.url }}" class="card-img-top rounded-top" alt="{{ featured_post.title }}">
-      {% endif %}
-        <div class="mb-4">
- 
-  </div>
-      
-      <div class="card-body">
-        <span class="badge bg-dark text-uppercase mb-2">Latest</span>
-
-        <h2 class="card-title display-5">{{ featured_post.title }}</h2>
-        <p class="text-muted mb-2">
-          By {{ featured_post.author.username }} on {{ featured_post.created_at|date:"F j, Y" }} —
-          Category: {{ featured_post.category.name|default:"General" }}
-        </p>
-        <p class="card-text">{{ featured_post.content|truncatewords:50 }}</p>
-        <a href="{% url 'post_detail' featured_post.pk %}" class="btn btn-dark">Read full post</a>
+    <div class="mb-5">
+      <div class="card border-0 shadow-lg rounded-4 bg-light">
+        {% if featured_post.image %}
+          <img src="{{ featured_post.image.url }}" class="featured-img rounded-top mb-3" alt="{{ featured_post.title }}">
+        {% endif %}
+        <div class="card-body">
+          <span class="badge bg-dark text-uppercase mb-2">Latest</span>
+          <h2 class="card-title display-5">{{ featured_post.title }}</h2>
+          <p class="text-muted mb-2">
+            By {{ featured_post.author.username }} on {{ featured_post.created_at|date:"F j, Y" }} — 
+            Category: {{ featured_post.category.name|default:"General" }}
+          </p>
+          <p class="card-text">{{ featured_post.content|truncatewords:50 }}</p>
+          <a href="{% url 'post_detail' featured_post.pk %}" class="btn btn-dark">Read full post</a>
+        </div>
       </div>
     </div>
-  </div>
-{% endif %}
+  {% endif %}
 
-
-  
-  
   <div class="row">
     {% for post in posts %}
       <div class="col-md-6 mb-4">
         <div class="card h-100 shadow border-0 rounded-4">
-        <div class="card-body d-flex flex-column justify-content-between">
-         
+          <div class="card-body d-flex flex-column justify-content-between">
             <h5 class="card-title">
               <p class="text-muted small mb-1">
                 {% if post.category %}
-  {{ post.category.name }}
-{% else %}
-  General
-{% endif %}
-
-
+                  {{ post.category.name }}
+                {% else %}
+                  General
+                {% endif %}
               </p>
-              
               <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
             </h5>
+
             {% if post.image %}
-  <img src="{{ post.image.url }}" class="card-img-top rounded-top" alt="{{ post.title }}">
-{% endif %}
+              <img src="{{ post.image.url }}" class="post-card-img rounded-top mb-3" alt="{{ post.title }}">
+            {% endif %}
 
             <p class="card-text">{{ post.content|truncatewords:30 }}</p>
-            <p class="text-muted small mb-1">
-         
-            
-            <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-dark">Read more</a>
+            <a href="{% url 'post_detail' post.pk %}" class="btn btn-outline-dark mt-auto">Read more</a>
           </div>
+
           <div class="card-footer text-muted small d-flex flex-column">
             <div>Posted by {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}</div>
             <div>Last updated: {{ post.updated|date:"F j, Y, g:i a" }}</div>
@@ -87,7 +72,8 @@
     {% empty %}
       <p>No posts yet.</p>
     {% endfor %}
-  
-    {% include "pagination.html" with page=posts %}
   </div>
-  {% endblock %}
+
+  {% include "pagination.html" with page=posts %}
+</div>
+{% endblock %}
