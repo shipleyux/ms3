@@ -8,8 +8,18 @@
     <p>Last updated: {{ post.updated }}</p>
 
     </p>
+    <p class="text-muted small mb-1">
+      {% if post.category %}
+  {{ post.category.name }}
+{% else %}
+  General
+{% endif %}
+
+    </p>
 
     <h2>{{ post.title }}</h2>
+
+    
     <div class="post-body">
       <p>{{ post.content|linebreaks }}</p>
     </div>
