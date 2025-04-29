@@ -9,6 +9,42 @@
 
   </div>
 
+  {% if featured_post %}
+  <div class="mb-5">
+    <div class="card border-0 shadow-lg rounded-4 bg-light">
+      {% if featured_post.image %}
+        <img src="{{ featured_post.image.url }}" class="card-img-top rounded-top" alt="{{ featured_post.title }}">
+      {% endif %}
+      <div class="card-body">
+        <span class="badge bg-dark text-uppercase mb-2">Latest</span>
+
+        <h2 class="card-title display-5">{{ featured_post.title }}</h2>
+        <p class="text-muted mb-2">
+          By {{ featured_post.author.username }} on {{ featured_post.created_at|date:"F j, Y" }} —
+          Category: {{ featured_post.category.name|default:"General" }}
+        </p>
+        <p class="card-text">{{ featured_post.content|truncatewords:50 }}</p>
+        <a href="{% url 'post_detail' featured_post.pk %}" class="btn btn-dark">Read full post</a>
+      </div>
+    </div>
+  </div>
+{% endif %}
+
+
+  <div class="mb-4">
+    <nav class="nav nav-pills justify-content-center flex-wrap gap-2">
+      <a class="nav-link {% if not active_category %}active{% endif %}" href="{% url 'post_list' %}">
+        All
+      </a>
+      {% for category in categories %}
+        <a class="nav-link {% if active_category and active_category.id == category.id %}active{% endif %}" 
+           href="{% url 'posts_by_category' category.id %}">
+          {{ category.name }}
+        </a>
+      {% endfor %}
+    </nav>
+  </div>
+  
   <div class="row">
     {% for post in posts %}
       <div class="col-md-6 mb-4">

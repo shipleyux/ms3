@@ -9,14 +9,43 @@ from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import Post
 from .forms import PostForm, CommentForm, RegisterForm
+from .models import Post, Category
+
+def posts_by_category(request, category_id):
+    category = Category.objects.get(id=category_id)
+    posts = Post.objects.filter(category=category).order_by('-created_at')
+    categories = Category.objects.all()
+    paginator = Paginator(posts, 4)
+    page_number = request.GET.get('page')
+    posts = paginator.get_page(page_number)
+
+    return render(request, 'blog/post_list.html', {
+        'posts': posts,
+        'categories': categories,
+        'active_category': None
+    })
+
+
 
 def post_list(request):
-    post_list = Post.objects.all().order_by('-created_at')
-    paginator = Paginator(post_list, 3)  # 3 posts per page
+    all_posts = Post.objects.all().order_by('-created_at')
+    categories = Category.objects.all()
+
+    # Split into featured + others
+    featured_post = all_posts.first()
+    post_list = all_posts[1:]  # everything except the first
+
+    paginator = Paginator(post_list, 3)  # Or 4, your choice
     page_number = request.GET.get('page', 1)
     posts = paginator.get_page(page_number)
 
-    return render(request, 'blog/post_list.html', {'posts': posts})
+    return render(request, 'blog/post_list.html', {
+        'featured_post': featured_post,
+        'posts': posts,
+        'categories': categories,
+        'active_category': None
+    })
+
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)

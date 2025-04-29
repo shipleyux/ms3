@@ -1,10 +1,19 @@
 body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f8f9fa;
-    color: #333;
-  }
+  background-color: white;
+  color: #000000;
+  font-family: 'Inter', sans-serif;
+}
+
+.btn-dark {
+  background-color: #000000;
+  border: none;
+  color: #ffffff;
+}
+
+.btn-dark:hover {
+  background-color: #222222;
+}
+
   
   .container {
     max-width: 800px;
