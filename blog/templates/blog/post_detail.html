@@ -44,7 +44,10 @@
     <h2>Leave a Comment</h2>
     
     {% if new_comment %}
-      <p><strong>Thank you for your comment!</strong> It has been posted.</p>
+    <div class="alert alert-success mt-3">
+      Your comment has been submitted and is awaiting approval from a moderator.
+    </div>
+    
     {% else %}
       <form method="post">
         {% csrf_token %}

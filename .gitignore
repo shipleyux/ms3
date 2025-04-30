@@ -1,1 +1,7 @@
 env.py
+# Ignore media files
+/media/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
