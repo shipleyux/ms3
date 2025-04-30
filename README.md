@@ -8,7 +8,8 @@
 
 - [Purpose & Target Audience](#purpose--target-audience)
 - [User Stories](#user-stories)
-- [Features](#-features)
+- [Features](#features)
+- [Project Management](#project-management)
 - [UX & Accessibility Design](#ux--accessibility-design)
 - [Data Model](#data-model)
 - [Validation & Accessibility Testing](#validation--accessibility-testing)
@@ -72,6 +73,16 @@ This project serves a community of users who are interested in living alcohol-fr
 - Deployed to Heroku with PostgreSQL database  
 
 ---
+
+## Project Management
+
+Project planning and task tracking were managed using the GitHub Projects board. The board was structured using columns **To Do**, **In Progress**, and **Done** to organise tasks effectively and ensure steady progress throughout development.
+
+Each issue or task was broken down into manageable items, including UI design, CRUD functionality, testing, and deployment.
+
+![GitHub Project Board Screenshot](https://github.com/user-attachments/assets/9f06527c-3ecd-4f42-82c7-a2a23da46a8d)
+
+
 
 ## UX & Accessibility Design
 
