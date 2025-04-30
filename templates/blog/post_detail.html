@@ -1,0 +1,76 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container py-4">
+  <article class="card shadow-sm">
+
+    {% if post.image %}
+      <div class="post-detail-image-wrapper mb-4 rounded">
+        <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-detail-image">
+      </div>
+    {% endif %}
+
+    <div class="card-body">
+      <div class="d-flex justify-content-between text-muted small mb-2">
+        <span>{{ post.created_at|date:"F j, Y" }}</span>
+        <span>🖊️ {{ post.author }}</span>
+      </div>
+
+      <p class="text-muted mb-1">
+        {% if post.category %}
+          {{ post.category.name }}
+        {% else %}
+          General
+        {% endif %}
+      </p>
+
+      <h2 class="card-title">{{ post.title }}</h2>
+
+      <p class="text-muted small mb-3">Last updated: {{ post.updated }}</p>
+
+      <div class="card-text mb-4">
+        {{ post.content|linebreaks }}
+      </div>
+    </div>
+
+    <div class="card-body border-top">
+      <h4 class="mb-3">Comments</h4>
+      {% if comments %}
+        {% for comment in comments %}
+          <div class="mb-3 p-3 bg-light border rounded">
+            <strong>{{ comment.name }}</strong>
+            <small class="text-muted"> on {{ comment.created|date:"M d, Y" }}</small>
+            <p class="mt-2">{{ comment.body }}</p>
+          </div>
+        {% endfor %}
+      {% else %}
+        <p class="text-muted">No comments yet.</p>
+      {% endif %}
+    </div>
+
+    <div class="card-body border-top">
+      <h4 class="mb-3">Leave a Comment</h4>
+
+      {% if new_comment %}
+        <div class="alert alert-success">
+          Your comment has been submitted and is awaiting approval from a moderator.
+        </div>
+      {% else %}
+        <form method="post">
+          {% csrf_token %}
+          {{ comment_form.as_p }}
+          <button type="submit" class="btn btn-dark">Post Comment</button>
+        </form>
+      {% endif %}
+    </div>
+
+    {% if user == post.author %}
+      <div class="card-footer text-end">
+        <a class="btn btn-outline-secondary me-2" href="{% url 'post_edit' post.id %}">Edit</a>
+        <a class="btn btn-outline-danger" href="{% url 'post_delete' post.id %}">Delete</a>
+      </div>
+    {% endif %}
+  </article>
+</div>
+{% endblock %}
+
