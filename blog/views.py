@@ -35,7 +35,7 @@ def post_list(request):
     featured_post = all_posts.first()
     post_list = all_posts[1:]  # everything except the first
 
-    paginator = Paginator(post_list, 3)  # Or 4, your choice
+    paginator = Paginator(post_list, 4) 
     page_number = request.GET.get('page', 1)
     posts = paginator.get_page(page_number)
 
