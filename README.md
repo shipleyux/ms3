@@ -10,6 +10,7 @@
 - [User Stories](#user-stories)
 - [Features](#features)
 - [Project Management](#project-management)
+- [Entity Relationship Diagram](#entity-relationship-diagram-erd)
 - [UX & Accessibility Design](#ux--accessibility-design)
 - [Data Model](#data-model)
 - [Validation & Accessibility Testing](#validation--accessibility-testing)
@@ -82,6 +83,19 @@ Each issue or task was broken down into manageable items, including UI design, C
 
 ![GitHub Project Board Screenshot](https://github.com/user-attachments/assets/9f06527c-3ecd-4f42-82c7-a2a23da46a8d)
 
+## Entity Relationship Diagram (ERD)
+
+The ERD was especially useful in:
+- Identifying how posts and comments are tied to users
+- Structuring the `Post` model with foreign keys to both `User` and `Category`
+- Clarifying the 1-to-many relationships between `User → Post`, `User → Comment`, and `Post → Comment`
+- Removing unnecessary complexity (e.g., a custom `Profile` model)
+
+The diagram below illustrates the final data structure used in the app:
+
+<img src="docs/images/erd.png" alt="Blog ERD" width="500"/>
+
+[Download ERD (PNG)](docs/images/erd.png)
 
 
 ## UX & Accessibility Design

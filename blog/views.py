@@ -148,14 +148,3 @@ def post_delete(request, pk):
 
     return render(request, 'blog/post_confirm_delete.html', {'post': post})
 
-def register(request):
-    if request.method == 'POST':
-        form = RegisterForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, 'Account created successfully!')
-            return redirect('login')
-    else:
-        form = RegisterForm()
-
-    return render(request, 'blog/register.html', {'form': form})

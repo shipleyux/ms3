@@ -39,27 +39,7 @@ class Post(models.Model):
 
 
 
-# Profile model
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    display_name = models.CharField(max_length=100, blank=True)
 
-    def __str__(self):
-        return self.display_name or self.user.email
-
-
-# Automatically create or update profile on user creation
-@receiver(post_save, sender=User)
-def create_or_update_user_profile(sender, instance, created, **kwargs):
-    if created:
-        Profile.objects.create(user=instance)
-    else:
-        instance.profile.save()
-
-@receiver(post_save, sender=User)
-def save_user_profile(sender, instance, **kwargs):
-    instance.profile.save()
- 
 
 # Comments model
 class Comment(models.Model):
