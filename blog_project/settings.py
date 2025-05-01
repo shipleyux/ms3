@@ -164,10 +164,15 @@ MIDDLEWARE = (
 ACCOUNT_EMAIL_VERIFICATION = "none"
 
 # Only use username for login
-ACCOUNT_LOGIN_METHODS = {"username"}
+ACCOUNT_LOGIN_METHODS = {'username'}
+ACCOUNT_SIGNUP_FIELDS = ['username', 'password1', 'password2']
+
 
 # Only collect username and password during signup
-ACCOUNT_SIGNUP_FIELDS = ["username", "password1", "password2"]
+ACCOUNT_FORMS = {
+    'signup': 'blog.forms.CustomSignupForm',
+}
+
 
 LOGIN_REDIRECT_URL = "/"
 

@@ -8,7 +8,7 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import Post
-from .forms import PostForm, CommentForm, RegisterForm
+from .forms import PostForm, CommentForm
 from .models import Post, Category
 
 def posts_by_category(request, category_id):

@@ -18,21 +18,23 @@
       {% csrf_token %}
     
       {% for field in form %}
-        <div class="mb-3">
-          <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
-          {{ field }}  {# Just render the field without custom filter #}
+      <div class="mb-3">
+        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+        {{ field|add_class:"form-control" }}
     
-          {% if field.help_text %}
-            <div class="form-text">{{ field.help_text }}</div>
-          {% endif %}
+        {% if field.help_text %}
+          <div class="form-text">{{ field.help_text }}</div>
+        {% endif %}
     
-          {% for error in field.errors %}
-            <div class="text-danger small">{{ error }}</div>
-          {% endfor %}
-        </div>
-      {% endfor %}
+        {% for error in field.errors %}
+          <div class="text-danger small">{{ error }}</div>
+        {% endfor %}
+      </div>
+    {% endfor %}
     
-      <button type="submit" class="btn btn-success w-100">Sign Up</button>
+
+    
+      <button type="submit" class="btn btn-dark w-100">Sign Up</button>
     </form>
     
     
