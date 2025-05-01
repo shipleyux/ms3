@@ -138,7 +138,7 @@ Each issue or task was broken down into manageable items, including UI design, C
 | Post pagination             | Older posts accessible                         | ✅ Pass  |
 | Filter by category          | Filter works as expected                       | ✅ Pass  |
 | Image upload                | Displays on homepage and detail view           | ✅ Pass  |
-| Commenting & moderation     | Comments added and approved via admin          | ✅ Pass  |
+| Commenting                  | Comments added with CRUD                       | ✅ Pass  |
 | Responsive layout           | Works on mobile, tablet, desktop               | ✅ Pass  |
 | 404 pages                   | Custom error page loads                        | ✅ Pass  |
 | Static files                | CSS and JS load correctly                      | ✅ Pass  |
