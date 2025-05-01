@@ -19,6 +19,7 @@
 - [Technologies Used](#technologies-used)
 - [Deployment](#deployment)
 - [Security](#security)
+- [Custom Error Pages](#custom-error-pages)
 - [Code Quality](#code-quality)
 - [Lessons Learned](#lessons-learned)
 - [Project Structure](#project-structure)
@@ -196,6 +197,16 @@ The diagram below illustrates the final data structure used in the app:
 - `ALLOWED_HOSTS` and CORS configured  
 - Admin access restricted to superusers  
 - Login required for editing/deleting posts  
+
+---
+
+## Custom Error Pages
+
+The application includes custom error pages for 403, 404, and 500 errors. These help ensure users are guided when something goes wrong, instead of seeing a browser or Django error screen.
+
+The `404.html` file is implemented as a standalone HTML page to avoid potential rendering issues during production when `DEBUG = False`. This ensures stable and user-friendly error feedback.
+
+This approach meets the specification’s requirement for robust error handling and clear user messaging.
 
 ---
 
