@@ -176,6 +176,9 @@ ACCOUNT_FORMS = {
 
 LOGIN_REDIRECT_URL = "/"
 
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/logout/success/'
+
+
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 

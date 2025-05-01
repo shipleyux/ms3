@@ -30,9 +30,10 @@ class PostForm(forms.ModelForm):
         model = Post
         fields = ['title', 'content', 'category', 'image']
 
+
 class CommentForm(forms.ModelForm):
     class Meta:
         model = Comment
-        fields = ('name', 'email', 'body')
+        fields = ['body']
 
 

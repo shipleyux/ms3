@@ -20,12 +20,18 @@ from django.urls import path, include  #  include here to handle other app URLs
 from blog.views import post_list  #  main view for the home page
 from django.conf import settings
 from django.conf.urls.static import static
+from django.views.generic import TemplateView
+from blog.views import CommentEditView, CommentDeleteView
+
 
 urlpatterns = [
     path('', post_list, name='home'),  # Home page that uses the post_list view
     path('admin/', admin.site.urls),  # Admin URL
     path('accounts/', include('allauth.urls')),# Include allauth URLs for login, registration, etc.
     path('', include('blog.urls')),  
+    path("accounts/logout/success/", TemplateView.as_view(template_name="account/logout_success.html"), name="logout_success"),
+    path('comment/<int:pk>/edit/', CommentEditView.as_view(), name='edit_comment'),
+    path('comment/<int:pk>/delete/', CommentDeleteView.as_view(), name='delete_comment'),
 ]
 
 if settings.DEBUG:

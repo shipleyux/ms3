@@ -10,6 +10,33 @@ from django.http import HttpResponseForbidden
 from .models import Post
 from .forms import PostForm, CommentForm
 from .models import Post, Category
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic import UpdateView, DeleteView
+from django.urls import reverse_lazy
+from .models import Comment
+
+class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Comment
+    fields = ['body']
+    template_name = 'blog/edit_comment.html'
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
+
+class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Comment
+    template_name = 'blog/delete_comment.html'
+
+    def get_success_url(self):
+        return self.object.post.get_absolute_url()
+
+    def test_func(self):
+        return self.request.user == self.get_object().author
+
 
 def posts_by_category(request, category_id):
     category = Category.objects.get(id=category_id)
@@ -49,14 +76,18 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    comments = post.comments.filter(active=True)
+    comments = post.comments.all()
     new_comment = None
 
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            return HttpResponseForbidden("You must be logged in to comment.")
+
         comment_form = CommentForm(data=request.POST)
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
+            new_comment.author = request.user 
             new_comment.save()
     else:
         comment_form = CommentForm()
@@ -67,6 +98,7 @@ def post_detail(request, pk):
         'comment_form': comment_form,
         'new_comment': new_comment,
     })
+
 
 @login_required
 def post_create(request):

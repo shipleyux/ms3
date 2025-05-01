@@ -52,7 +52,7 @@ This project serves a community of users who are interested in living alcohol-fr
 
 **As an admin, I want to:**
 
-- Moderate comments  
+- View and delete comments from admin panel if nessesary
 - Manage categories from the admin panel  
 - Ensure platform security and data integrity  
 
@@ -66,7 +66,7 @@ This project serves a community of users who are interested in living alcohol-fr
 - Categorised post filtering  
 - Featured "latest" post highlighted at the top  
 - Image upload per post  
-- Comment system with moderation  
+- Comment system 
 - Pagination for performance and UX  
 - Responsive layout with Bootstrap 5.3  
 - Custom CSS theme (clean, accessible, and consistent)  

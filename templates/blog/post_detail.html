@@ -1,9 +1,11 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-<div class="container py-4">
-  <article class="card shadow-sm">
 
+<div class="container py-4">
+  <p><a href="{% url 'post_list' %}">← Back to all posts</a></p>
+  <article class="card shadow-sm">
+   
     {% if post.image %}
       <div class="post-detail-image-wrapper mb-4 rounded">
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-detail-image">
@@ -12,6 +14,7 @@
 
     <div class="card-body">
       <div class="d-flex justify-content-between text-muted small mb-2">
+        
         <span>{{ post.created_at|date:"F j, Y" }}</span>
         <span>🖊️ {{ post.author }}</span>
       </div>
@@ -23,6 +26,7 @@
           General
         {% endif %}
       </p>
+ 
 
       <h2 class="card-title">{{ post.title }}</h2>
 
@@ -38,9 +42,15 @@
       {% if comments %}
         {% for comment in comments %}
           <div class="mb-3 p-3 bg-light border rounded">
-            <strong>{{ comment.name }}</strong>
+            <strong>{{ comment.author.username }}</strong>
             <small class="text-muted"> on {{ comment.created|date:"M d, Y" }}</small>
             <p class="mt-2">{{ comment.body }}</p>
+            {% if user == comment.author %}
+  <p class="mt-2">
+    <a href="{% url 'edit_comment' comment.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
+    <a href="{% url 'delete_comment' comment.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+  </p>
+{% endif %}
           </div>
         {% endfor %}
       {% else %}
@@ -48,21 +58,26 @@
       {% endif %}
     </div>
 
-    <div class="card-body border-top">
-      <h4 class="mb-3">Leave a Comment</h4>
+    {% if user.is_authenticated %}
+  <form method="post">
+    {% csrf_token %}
+    {{ comment_form.as_p }}
+    <button type="submit" class="btn btn-primary">Submit Comment</button>
+  </form>
 
-      {% if new_comment %}
-        <div class="alert alert-success">
-          Your comment has been submitted and is awaiting approval from a moderator.
-        </div>
-      {% else %}
-        <form method="post">
-          {% csrf_token %}
-          {{ comment_form.as_p }}
-          <button type="submit" class="btn btn-dark">Post Comment</button>
-        </form>
-      {% endif %}
-    </div>
+  {% if comment_form.errors %}
+  <div class="alert alert-danger mt-3">
+    {{ comment_form.errors }}
+  </div>
+{% endif %}
+
+
+
+{% else %}
+  <p class="mt-4">You must <a href="{% url 'account_login' %}?next={{ request.path }}">log in</a> to leave a comment.</p>
+{% endif %}
+
+
 
     {% if user == post.author %}
       <div class="card-footer text-end">
