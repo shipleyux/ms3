@@ -35,6 +35,7 @@ These credentials are only for project assessment and testing purposes.
 - [UX & Accessibility Design](#ux--accessibility-design)
 - [Data Model](#data-model)
 - [Validation & Accessibility Testing](#validation--accessibility-testing)
+- [Future Improvements](#future-improvements)
 - [Clean Code & Development Standards](#clean-code--development-standards)
 - [Manual Testing](#manual-testing)
 - [Technologies Used](#technologies-used)
@@ -290,6 +291,16 @@ This approach ensures the application is readable, scalable, accessible and robu
 - **Keyboard Navigation**: All interactive elements are reachable and operable using Tab and Enter keys.
 - **Screen Reader Compatibility**: Tested using VoiceOver on Mac. Headings, landmarks, and buttons are accessible.
 - **ARIA Labels**: Not required due to semantic markup but included where helpful.
+
+---
+
+## Future Improvements
+
+**Comment Moderation**
+
+Comment moderation was considered during development to allow admin approval before displaying user-submitted comments. However, to streamline the user experience and simplify testing, moderation was omitted in the current version. Comments are displayed immediately upon submission.
+
+This decision allowed for a clearer focus on core CRUD functionality and user interaction. If time permits, moderation may be reintroduced as an enhancement by enabling the existing `active` field and filtering comments accordingly.
 
 ---
 

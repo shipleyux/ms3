@@ -90,6 +90,7 @@ def post_detail(request, pk):
             new_comment.post = post
             new_comment.author = request.user 
             new_comment.save()
+
     else:
         comment_form = CommentForm()
 
