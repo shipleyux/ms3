@@ -3,6 +3,27 @@
 **Sober Spaces** is a full-stack blog web application built using Django. It allows users to create, read, update and delete (CRUD) posts about sobriety journeys and alcohol-free venues. This project was developed as part of the Level 5 Diploma in Web Application Development, Unit 3: Back End Development.
 
 ---
+## Live Site
+
+This project is deployed on Heroku and can be accessed here:
+
+[View the Live Site: Sober Spaces](https://ms3-blog-17789f37c9f8.herokuapp.com/)
+
+## Admin Panel Access
+
+This Django application includes an admin panel for managing posts, categories, and user comments.
+
+You can access the admin interface here:
+
+[Admin Panel](https://ms3-blog-17789f37c9f8.herokuapp.com/admin/login/?next=/admin/)
+
+### Superuser Credentials (for testing)
+
+These credentials are only for project assessment and testing purposes.
+
+- **Username:** `sarashipley`
+- **Password:** `123`
+
 
 ## Table of Contents
 
@@ -23,7 +44,6 @@
 - [Code Quality](#code-quality)
 - [Lessons Learned](#lessons-learned)
 - [Project Structure](#project-structure)
-- [Superuser Credentials](#superuser-credentials)
 - [Acknowledgements](#acknowledgements)
 
 ---
@@ -288,10 +308,6 @@ This approach ensures the application is readable, scalable, accessible and robu
 
 
 ---
-
-##  Superuser Credentials
-- Superuser name: **sarashipley** 
-- Superuser password: **123**
 
 ##  Acknowledgements
 
