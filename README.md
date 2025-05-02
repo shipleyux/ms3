@@ -338,5 +338,6 @@ This decision allowed for a clearer focus on core CRUD functionality and user in
 - Unsplash for images
 - Drawsql was used for database schema
 - Django 5 By Example by Antonio Mele was used as a point of reference
+- Matt Rudge youtube tutorials for a guidance
 - Special thanks to Spencer Bariball for this help and guidance on this project
 
