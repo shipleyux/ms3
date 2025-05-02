@@ -90,6 +90,8 @@ def post_detail(request, pk):
             new_comment.post = post
             new_comment.author = request.user 
             new_comment.save()
+            # Redirect after saving to prevent form resubmission
+            return redirect('post_detail', pk=post.pk)
 
     else:
         comment_form = CommentForm()

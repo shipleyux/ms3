@@ -180,9 +180,6 @@ All custom CSS was tested using the [W3C CSS Validator](https://jigsaw.w3.org/cs
 
 The main stylesheet (`style.css`) was uploaded directly to the validator. The results showed no syntax errors or compatibility warnings.
 
-**Summary:**
-- All CSS rules are valid and properly structured.
-- CSS follows best practices for accessibility and responsiveness.
 
 **Status:** ✅ Pass
 
