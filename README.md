@@ -122,7 +122,7 @@ The diagram below illustrates the final data structure used in the app:
 
 ## Database Schema
 
-The diagram below shows how the main parts of the website's data are connected. Each blog post is written by a registered user and can belong to a category (like “Advice” or “Events”). Users can also leave comments on posts. Each comment is linked both to the post it’s about and to the user who wrote it. This structure keeps everything organised and makes it easy to manage content and users within the site.
+The diagram below shows how the main parts of the website's data are connected. Each blog post is written by a registered user and can belong to a category (like "Health" or “Travel”). Users can also leave comments on posts. Each comment is linked both to the post it’s about and to the user who wrote it. This structure keeps everything organised and makes it easy to manage content and users within the site.
 
 <img src="docs/images/database_schema.png" alt="Database Schema" width="1000"/>
 

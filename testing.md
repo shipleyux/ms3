@@ -1,4 +1,4 @@
-## ✅ HTML Validation
+## ✅ HTML and CSS Validation
 
 All HTML files were tested using the [W3C Markup Validator](https://validator.w3.org/). Template-specific Django tags (`{% %}`, `{{ }}`) were ignored during validation, and all structural HTML errors were corrected.
 
@@ -169,6 +169,24 @@ To:
 **Status:** ✅ Pass
 
 
+
+</details>
+
+---
+<details>
+<summary><strong> CSS Validation</strong> – Passed</summary>
+
+All custom CSS was tested using the [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) to ensure compliance with modern web standards.
+
+The main stylesheet (`style.css`) was uploaded directly to the validator. The results showed no syntax errors or compatibility warnings.
+
+**Summary:**
+- All CSS rules are valid and properly structured.
+- CSS follows best practices for accessibility and responsiveness.
+
+**Status:** ✅ Pass
+
+<img src="docs/images/css.png" alt="CSS">
 
 </details>
 
