@@ -1,5 +1,5 @@
 {% extends "blog/base.html" %}
-{% load cloudinary_filters %}
+
 
 
 
@@ -21,32 +21,23 @@
     </nav>
   </div>
 
-  {% if featured_post %}
-    <div class="mb-5">
-      <div class="card border-0 shadow-lg rounded-4 bg-light">
-        {% if featured_post.image %}
-  <img 
-    src="{{ featured_post.image.url }}?f_auto,q_auto,w_1200" 
-    alt="{{ featured_post.title }}" 
-    width="1200" 
-    height="800" 
-    class="featured-img"
-    loading="eager" fetchpriority="high">
-{% endif %}
-
-        <div class="card-body">
-          <span class="badge bg-dark text-uppercase mb-2">Latest</span>
-          <h2 class="card-title display-5">{{ featured_post.title }}</h2>
-          <p class="text-muted mb-2">
-            By {{ featured_post.author.username }} on {{ featured_post.created_at|date:"F j, Y" }} — 
-            Category: {{ featured_post.category.name|default:"General" }}
-          </p>
-          <p class="card-text">{{ featured_post.content|truncatewords:50 }}</p>
-          <a href="{% url 'post_detail' featured_post.pk %}" class="btn btn-dark">Read full post</a>
-        </div>
+  {% if featured_post and featured_post.pk %}
+  <div class="mb-5">
+    <div class="card border-0 shadow-lg rounded-4 bg-light">
+      <div class="card-body">
+        <span class="badge bg-dark text-uppercase mb-2">Latest</span>
+        <h2 class="card-title display-5">{{ featured_post.title }}</h2>
+        <p class="text-muted mb-2">
+          By {{ featured_post.author.username }} on {{ featured_post.created_at|date:"F j, Y" }} — 
+          Category: {{ featured_post.category.name|default:"General" }}
+        </p>
+        <p class="card-text">{{ featured_post.content|truncatewords:50 }}</p>
+        <a href="{% url 'post_detail' featured_post.pk %}" class="btn btn-dark">Read full post</a>
       </div>
     </div>
-  {% endif %}
+  </div>
+{% endif %}
+
 
   <div class="row">
     {% for post in posts %}
@@ -62,23 +53,17 @@
                 {% endif %}
               </p>
               <a href="{% url 'post_detail' post.pk %}">{{ post.title }}</a>
-            
-
-            {% if post.image %}
-            <img src="{{ post.image.url }}?f_auto,q_auto,w_600" alt="{{ post.title }}" width="600" height="400" class="post-card-img" loading="lazy">
-
-
-
-
-
-            {% endif %}
 
             <p class="card-text">{{ post.content|truncatewords:30 }}</p>
            
           </div>
 
           <div class="card-footer text-muted small d-flex flex-column">
-            <div>Posted by {{ post.author.username }} on {{ post.created_at|date:"F j, Y" }}</div>
+            <div class="d-flex align-items-center mb-2">
+              <div class="author-circle me-2">{{ post.author.username|slice:":1"|upper }}</div>
+              <small class="text-muted">By {{ post.author.username }}</small>
+            </div>
+            
             <div>Last updated: {{ post.updated|date:"F j, Y, g:i a" }}</div>
             <div>{{ post.comments.count }} comment{{ post.comments.count|pluralize }}</div>
           </div>

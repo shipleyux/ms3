@@ -39,41 +39,6 @@ body {
   width: 100%;
 }
 
-/* Image thumbnails */
-.featured-img {
-  width: 100%;
-  height: 400px;
-  object-fit: cover;
-  display: block;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-
-.post-card-img {
-  height: 250px;           /* Fix height */
-  width: 100%;             /* Full width of the card */
-  object-fit: cover;       /* Crop to fill, keeps aspect ratio */
-  display: block;
-  border-top-left-radius: 1rem;
-  border-top-right-radius: 1rem;
-}
-
-
-/* Post detail image wrapper */
-.post-detail-image-wrapper {
-  height: 25rem; /* 400px */
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.post-detail-image {
-  max-height: 100%;
-  max-width: 100%;
-  object-fit: contain;
-}
 
 /* Link styling inside cards */
 .card-title a {
@@ -137,3 +102,18 @@ main {
     height: 250px;
   }
 }
+
+.author-circle {
+  width: 32px;
+  height: 32px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 0.85rem;
+  margin-bottom: 0.5rem;
+}
+

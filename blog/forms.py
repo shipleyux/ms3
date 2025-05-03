@@ -28,7 +28,7 @@ class CustomSignupForm(SignupForm):
 class PostForm(forms.ModelForm):
     class Meta:
         model = Post
-        fields = ['title', 'content', 'category', 'image']
+        fields = ['title', 'content', 'category']
         widgets = {
             'title': forms.TextInput(attrs={
                 'class': 'form-control',
@@ -42,15 +42,11 @@ class PostForm(forms.ModelForm):
             'category': forms.Select(attrs={
                 'class': 'form-control'
             }),
-            'image': forms.ClearableFileInput(attrs={
-                'class': 'form-control'
-            }),
         }
         labels = {
             'title': ' Title',
             'content': 'Content',
             'category': 'Category',
-            'image': 'Featured Image',
         }
 
 
