@@ -11,6 +11,7 @@ from django.dispatch import receiver
 from django.urls import reverse
 
 
+
 # Categories model
 class Category(models.Model):
     name = models.CharField(max_length=50, unique=True)

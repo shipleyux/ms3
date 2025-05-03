@@ -1,4 +1,7 @@
 {% extends "blog/base.html" %}
+{% load cloudinary_filters %}
+
+
 
 {% block content %}
 <div class="container my-5">
@@ -22,7 +25,7 @@
     <div class="mb-5">
       <div class="card border-0 shadow-lg rounded-4 bg-light">
         {% if featured_post.image %}
-        <img src="{{ featured_post.image.url }}" class="featured-img rounded-top mb-3" alt="{{ featured_post.title }}">
+        <img src="{{ featured_post.image.url }}?f_auto,q_auto,w_1200" alt="{{ featured_post.title }}" width="1200" height="800" class="featured-img">
 
         {% endif %}
         <div class="card-body">
@@ -56,7 +59,9 @@
             
 
             {% if post.image %}
-            <img src="{{ post.image.url }}" class="img-fluid post-card-img rounded-top mb-3" alt="{{ post.title }}">
+            <img src="{{ post.image.url }}?f_auto,q_auto,w_600" alt="{{ post.title }}" width="600" height="400" class="post-card-img" loading="lazy">
+
+
 
 
             {% endif %}
