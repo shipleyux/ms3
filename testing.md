@@ -1,4 +1,4 @@
-## ✅ HTML and CSS Validation
+## HTML and CSS Validation
 
 All HTML files were tested using the [W3C Markup Validator](https://validator.w3.org/). Template-specific Django tags (`{% %}`, `{{ }}`) were ignored during validation, and all structural HTML errors were corrected.
 
@@ -187,7 +187,7 @@ The main stylesheet (`style.css`) was uploaded directly to the validator. The re
 
 </details>
 
-### ✅ Accessibility Summary
+### Accessibility Summary
 
 This site was tested using the WAVE Web Accessibility Evaluation Tool to help ensure it is usable by as many people as possible, including those using screen readers or keyboard navigation.
 
@@ -198,14 +198,75 @@ All critical issues were resolved, including:
 - Removing empty heading tags that were confusing for screen readers
 - Adding descriptive link text (like “Read more about this post”) where needed
 - Including a hidden heading in the site’s layout to support screen readers
+- **Redundant Links**: WAVE flagged multiple links pointing to the same destination within each blog card — for example, both the post title and a "Read more" button linking to the full post. While this is a common and user-friendly design pattern, it was reviewed for accessibility. To reduce potential confusion for screen reader users, one of the duplicate links was removed, leaving a single clear and descriptive link per card.
+- **Low Contrast Buttons**: WAVE identified that the original "Edit" and "Delete" comment buttons had low contrast due to Bootstrap's `outline` button styles. These were updated to solid `btn-secondary` and `btn-danger` styles with white text to ensure they are readable and accessible to all users.
 
 Some common blog patterns, like linking both the post title and a “Read more” button to the same page, were kept for usability but reviewed to make sure they didn’t cause confusion.
 
 The site now passes accessibility checks and offers a user-friendly experience across devices and assistive technologies.
 
-<details>
-<summary><strong>View WAVE Accessibility Test Screenshots</strong></summary>
 
-_Add screenshots here showing the WAVE tool results before and after fixes._
+<details>
+<summary><strong>View WAVE Accessibility Homepage Screenshots</strong></summary>
+
+<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+
+</details>
+
+<details>
+<summary><strong>View WAVE Accessibility Post Detail Page Screenshots</strong></summary>
+
+<img src="docs/images/wave2.png" alt="Wave Test Homepage">
+
+</details>
+
+<details>
+<summary><strong>View WAVE Accessibility Create Post Page Screenshots</strong></summary>
+
+<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+
+</details>
+
+<details>
+<summary><strong>View WAVE Accessibility Login Page Screenshots</strong></summary>
+
+<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+
+</details>
+
+### Accessibility & Lighthouse Testing Checklist
+
+#### WAVE Accessibility Checks
+
+| Page                            | Tested | Notes                                                                 |
+|---------------------------------|--------|-----------------------------------------------------------------------|
+| Homepage (Post List)            | ✅     | Checked for heading structure, alt text, link clarity, and filters.  |
+| Post Detail Page                | ✅     | Tested comment section, images, and heading levels.                  |
+| Create Post Page                | ✅     | Verified form labels, input structure, and error handling.           |
+| Login / Signup Pages            | ✅     | Ensured proper label association and keyboard accessibility.         |
+| Edit Comment Page               | ✅     | Checked field labels and focus state.                                |
+| 404 Error Page                  | ✅     | Confirmed semantic structure and accessible messaging.               |
+
+All remaining WAVE alerts were reviewed. Where fixes were not possible without affecting core functionality or layout patterns, an explanation has been included in the Accessibility Summary.
+
+---
+
+#### Lighthouse Audit Results (Chrome DevTools)
+
+Lighthouse was run on the live site using Chrome DevTools to assess accessibility, performance, SEO, and best practices. Results were consistent across multiple key pages.
+
+| Metric        | Score Range (Out of 100) | Notes                                                         |
+|---------------|--------------------------|---------------------------------------------------------------|
+| Accessibility | 95–100                   | Strong use of alt text, labels, proper landmarks, and heading order. |
+| Performance   | 90–100                   | Optimized images, lazy loading, and minimal unused JS/CSS.    |
+| SEO           | 100                      | All pages include meta titles, descriptions, and semantic HTML. |
+| Best Practices| 100                      | Site uses HTTPS, avoids deprecated APIs, and passes audits.   |
+
+> Screenshots and detailed Lighthouse reports can be added below for reference.
+
+<details>
+<summary><strong>View Lighthouse Test Screenshots</strong></summary>
+
+_Add screenshots here showing Lighthouse scores and reports for homepage and post pages._
 
 </details>

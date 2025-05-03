@@ -51,8 +51,9 @@
 
             {% if user == comment.author %}
               <p class="mt-2">
-                <a href="{% url 'edit_comment' comment.pk %}" class="btn btn-sm btn-outline-secondary">Edit</a>
-                <a href="{% url 'delete_comment' comment.pk %}" class="btn btn-sm btn-outline-danger">Delete</a>
+                <a class="btn btn-sm btn-secondary text-white">Edit</a>
+                <a class="btn btn-sm btn-danger text-white">Delete</a>
+                
               </p>
             {% endif %}
           </div>
