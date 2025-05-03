@@ -223,14 +223,28 @@ The site now passes accessibility checks and offers a user-friendly experience a
 <details>
 <summary><strong>View WAVE Accessibility Create Post Page Screenshots</strong></summary>
 
-<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+<img src="docs/images/wave3.png" alt="Wave Test Homepage">
+
+</details>
+
+<details>
+<summary><strong>View WAVE Accessibility Sign Out Page Screenshots</strong></summary>
+
+<img src="docs/images/wave5.png" alt="Wave Test Homepage">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility Login Page Screenshots</strong></summary>
 
-<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+<img src="docs/images/wave4.png" alt="Wave Test Homepage">
+
+</details>
+
+<details>
+<summary><strong>View WAVE Accessibility 404 Page Screenshots</strong></summary>
+
+<img src="docs/images/wave6.png" alt="Wave Test Homepage">
 
 </details>
 
@@ -247,7 +261,6 @@ The site now passes accessibility checks and offers a user-friendly experience a
 | Edit Comment Page               | ✅     | Checked field labels and focus state.                                |
 | 404 Error Page                  | ✅     | Confirmed semantic structure and accessible messaging.               |
 
-All remaining WAVE alerts were reviewed. Where fixes were not possible without affecting core functionality or layout patterns, an explanation has been included in the Accessibility Summary.
 
 ---
 
@@ -270,3 +283,8 @@ Lighthouse was run on the live site using Chrome DevTools to assess accessibilit
 _Add screenshots here showing Lighthouse scores and reports for homepage and post pages._
 
 </details>
+
+---
+
+**CSRF Token During Login**  
+While testing, a 403 error may appear if the login form is submitted from a stale page (e.g. after using the back button or leaving the tab open too long). This is expected behavior due to Django's CSRF protection. Refreshing the login page before submitting resolves the issue.

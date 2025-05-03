@@ -50,7 +50,7 @@ def posts_by_category(request, category_id):
     return render(request, 'blog/post_list.html', {
         'posts': posts,
         'categories': categories,
-        'active_category': None
+        'active_category': category,
     })
 
 

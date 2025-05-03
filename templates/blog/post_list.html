@@ -22,7 +22,8 @@
     <div class="mb-5">
       <div class="card border-0 shadow-lg rounded-4 bg-light">
         {% if featured_post.image %}
-          <img src="{{ featured_post.image.url }}" class="featured-img rounded-top mb-3" alt="{{ featured_post.title }}">
+        <img src="{{ featured_post.image.url }}" class="featured-img rounded-top mb-3" alt="{{ featured_post.title }}">
+
         {% endif %}
         <div class="card-body">
           <span class="badge bg-dark text-uppercase mb-2">Latest</span>
@@ -55,7 +56,9 @@
             
 
             {% if post.image %}
-              <img src="{{ post.image.url }}" class="post-card-img rounded-top mb-3" alt="{{ post.title }}">
+            <img src="{{ post.image.url }}" class="img-fluid post-card-img rounded-top mb-3" alt="{{ post.title }}">
+
+
             {% endif %}
 
             <p class="card-text">{{ post.content|truncatewords:30 }}</p>
