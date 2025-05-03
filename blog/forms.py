@@ -29,6 +29,29 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ['title', 'content', 'category', 'image']
+        widgets = {
+            'title': forms.TextInput(attrs={
+                'class': 'form-control',
+                'placeholder': 'Enter a post title'
+            }),
+            'content': forms.Textarea(attrs={
+                'class': 'form-control',
+                'rows': 6,
+                'placeholder': 'Write your post content here...'
+            }),
+            'category': forms.Select(attrs={
+                'class': 'form-control'
+            }),
+            'image': forms.ClearableFileInput(attrs={
+                'class': 'form-control'
+            }),
+        }
+        labels = {
+            'title': ' Title',
+            'content': 'Content',
+            'category': 'Category',
+            'image': 'Featured Image',
+        }
 
 
 
@@ -37,7 +60,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['body']
         labels = {
-            'body': 'Leave a comment',
+            'body': 'Your Comment', 
         }
         widgets = {
             'body': forms.Textarea(attrs={
@@ -46,4 +69,5 @@ class CommentForm(forms.ModelForm):
                 'class': 'form-control',
             })
         }
+
 

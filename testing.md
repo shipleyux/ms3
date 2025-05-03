@@ -187,6 +187,25 @@ The main stylesheet (`style.css`) was uploaded directly to the validator. The re
 
 </details>
 
+### ✅ Accessibility Summary
 
+This site was tested using the WAVE Web Accessibility Evaluation Tool to help ensure it is usable by as many people as possible, including those using screen readers or keyboard navigation.
 
+All critical issues were resolved, including:
 
+- Making sure every image has alt text
+- Ensuring that every page has a proper heading structure (with one main heading)
+- Removing empty heading tags that were confusing for screen readers
+- Adding descriptive link text (like “Read more about this post”) where needed
+- Including a hidden heading in the site’s layout to support screen readers
+
+Some common blog patterns, like linking both the post title and a “Read more” button to the same page, were kept for usability but reviewed to make sure they didn’t cause confusion.
+
+The site now passes accessibility checks and offers a user-friendly experience across devices and assistive technologies.
+
+<details>
+<summary><strong>View WAVE Accessibility Test Screenshots</strong></summary>
+
+_Add screenshots here showing the WAVE tool results before and after fixes._
+
+</details>

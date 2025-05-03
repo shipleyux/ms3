@@ -1,12 +1,15 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
-
 <div class="container py-4">
-  <p><a href="{% url 'post_list' %}">← Back to all posts</a></p>
+  <p>
+    <a href="{% url 'post_list' %}" aria-label="Back to the list of all blog posts">
+      ← View all blog posts
+    </a>
+  </p>
 
   <article class="card shadow-sm">
-   
+
     {% if post.image %}
       <div class="post-detail-image-wrapper mb-4 rounded">
         <img src="{{ post.image.url }}" alt="{{ post.title }}" class="post-detail-image">
@@ -27,7 +30,8 @@
         {% endif %}
       </p>
 
-      <h2 class="card-title">{{ post.title }}</h2>
+      <h2>{{ post.title|default:"Untitled Post" }}</h2>
+
       <p class="text-muted small mb-3">Last updated: {{ post.updated }}</p>
 
       <div class="card-text mb-4">
@@ -36,7 +40,7 @@
     </div>
 
     <div class="card-body border-top">
-      <h4 class="mb-3">Comments</h4>
+      <h3 class="mb-3">Comments</h3>
 
       {% if comments %}
         {% for comment in comments %}
@@ -60,27 +64,30 @@
 
     {% if user.is_authenticated %}
       <div class="card-body border-top">
-        <h5 class="mb-3">Leave a comment</h5>
-        <div class="mx-auto" style="max-width: 600px;">
-          <form method="post">
-            {% csrf_token %}
+        <h4 class="mb-3">Leave a Comment</h4>
+        <div class="row justify-content-center">
+          <div class="col-md-10 col-lg-8">
+            <form method="post">
+              {% csrf_token %}
 
-            <div class="mb-3">
-              {{ comment_form.body.label_tag }}
-              {{ comment_form.body }}
-              {% if comment_form.body.errors %}
-                <div class="text-danger">{{ comment_form.body.errors }}</div>
-              {% endif %}
-            </div>
+              <div class="mb-3">
+                <label for="{{ comment_form.body.id_for_label }}" class="form-label">Your Comment</label>
 
-            <button type="submit" class="btn btn-dark">Submit Comment</button>
-          </form>
+                {{ comment_form.body }}
+                {% if comment_form.body.errors %}
+                  <div class="text-danger">{{ comment_form.body.errors }}</div>
+                {% endif %}
+              </div>
 
-          {% if comment_form.errors %}
-            <div class="alert alert-danger mt-3">
-              {{ comment_form.errors }}
-            </div>
-          {% endif %}
+              <button type="submit" class="btn btn-dark">Submit Comment</button>
+            </form>
+
+            {% if comment_form.errors %}
+              <div class="alert alert-danger mt-3">
+                {{ comment_form.errors }}
+              </div>
+            {% endif %}
+          </div>
         </div>
       </div>
     {% else %}
@@ -97,5 +104,4 @@
     {% endif %}
   </article>
 </div>
-
 {% endblock %}
