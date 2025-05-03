@@ -1,4 +1,4 @@
-## HTML and CSS Validation
+## Code Validation
 
 All HTML files were tested using the [W3C Markup Validator](https://validator.w3.org/). Template-specific Django tags (`{% %}`, `{{ }}`) were ignored during validation, and all structural HTML errors were corrected.
 
@@ -187,7 +187,15 @@ The main stylesheet (`style.css`) was uploaded directly to the validator. The re
 
 </details>
 
-### Accessibility Summary
+---
+
+### PEP 8 Compliance
+
+All Python files were checked for PEP 8 compliance using the [PEP8 CI tool](https://pep8ci.herokuapp.com/).  
+Warnings and errors were resolved where appropriate to ensure code quality and readability.
+
+---
+## Accessibility 
 
 This site was tested using the WAVE Web Accessibility Evaluation Tool to help ensure it is usable by as many people as possible, including those using screen readers or keyboard navigation.
 
@@ -248,23 +256,19 @@ The site now passes accessibility checks and offers a user-friendly experience a
 
 </details>
 
-### Accessibility & Lighthouse Testing Checklist
-
-#### WAVE Accessibility Checks
-
-| Page                            | Tested | Notes                                                                 |
-|---------------------------------|--------|-----------------------------------------------------------------------|
-| Homepage (Post List)            | ✅     | Checked for heading structure, alt text, link clarity, and filters.  |
-| Post Detail Page                | ✅     | Tested comment section, images, and heading levels.                  |
-| Create Post Page                | ✅     | Verified form labels, input structure, and error handling.           |
-| Login / Signup Pages            | ✅     | Ensured proper label association and keyboard accessibility.         |
-| Edit Comment Page               | ✅     | Checked field labels and focus state.                                |
-| 404 Error Page                  | ✅     | Confirmed semantic structure and accessible messaging.               |
-
-
 ---
 
-#### Lighthouse Audit Results (Chrome DevTools)
+## Lighthouse Audit Results (Chrome DevTools)
+
+
+
+<details>
+<summary><strong>View Lighthouse Test Screenshots</strong></summary>
+
+_Add screenshots here showing Lighthouse scores and reports for homepage and post pages._
+
+</details>
+
 
 Lighthouse was run on the live site using Chrome DevTools to assess accessibility, performance, SEO, and best practices. Results were consistent across multiple key pages.
 
@@ -275,7 +279,7 @@ Lighthouse was run on the live site using Chrome DevTools to assess accessibilit
 | SEO           | 100                      | All pages include meta titles, descriptions, and semantic HTML. |
 | Best Practices| 100                      | Site uses HTTPS, avoids deprecated APIs, and passes audits.   |
 ---
-### ⚙️ Performance Optimization: Removal of Post Images
+###  Performance Optimization: Removal of Post Images
 
 To improve Lighthouse performance scores and ensure a faster, more accessible user experience, post images were removed from the blog listing page (`post_list.html`).
 
@@ -299,16 +303,6 @@ Even with lazy loading and Cloudinary optimizations, these image-heavy layouts s
 - ✅ Better consistency and layout stability across screen sizes
 
 Removing images was a tradeoff for performance and user experience. A clean, minimal layout was prioritized for clarity and readability, especially on mobile devices.
-> Screenshots and detailed Lighthouse reports can be added below for reference.
 
-<details>
-<summary><strong>View Lighthouse Test Screenshots</strong></summary>
-
-_Add screenshots here showing Lighthouse scores and reports for homepage and post pages._
-
-</details>
 
 ---
-
-**CSRF Token During Login**  
-While testing, a 403 error may appear if the login form is submitted from a stale page (e.g. after using the back button or leaving the tab open too long). This is expected behavior due to Django's CSRF protection. Refreshing the login page before submitting resolves the issue.

@@ -2,8 +2,6 @@
 #
 # This file defines the database models for Posts, Comments, and User Profiles.
 
-
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
@@ -11,9 +9,8 @@ from django.dispatch import receiver
 from django.urls import reverse
 
 
-
-# Categories model
 class Category(models.Model):
+    """Categories model."""
     name = models.CharField(max_length=50, unique=True)
 
     class Meta:
@@ -22,11 +19,13 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-# Blog Post model
+
 class Post(models.Model):
+    """Blog Post model."""
     title = models.CharField(max_length=200)
     content = models.TextField()
-    category = models.ForeignKey('Category', on_delete=models.SET_NULL, null=True, blank=True)
+    category = models.ForeignKey(
+        'Category', on_delete=models.SET_NULL, null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE)
@@ -38,12 +37,10 @@ class Post(models.Model):
         return reverse('post_detail', args=[str(self.pk)])
 
 
-
-
-
-# Comments model
 class Comment(models.Model):
-    post = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='comments')
+    """Comments model."""
+    post = models.ForeignKey(
+        Post, on_delete=models.CASCADE, related_name='comments')
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
@@ -57,7 +54,6 @@ class Comment(models.Model):
     def __str__(self):
         return f'Comment by {self.author.username} on {self.post}'
 
-    
     def get_absolute_url(self):
         return self.post.get_absolute_url()
 

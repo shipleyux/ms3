@@ -1,14 +1,13 @@
 # blog/forms.py
 #
-# This file defines forms for creating posts, submitting comments, and registering new users.
-
+# forms for creating posts, submitting comments, and registering new users.
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Post, Comment
-from .models import Post, Category
+from .models import Post, Comment, Category
 from allauth.account.forms import SignupForm
+
 
 class CustomSignupForm(SignupForm):
     def __init__(self, *args, **kwargs):
@@ -18,12 +17,15 @@ class CustomSignupForm(SignupForm):
             del self.fields['email']
 
         self.fields['username'].label = "Username"
-        self.fields['username'].help_text = "Usernames must not contain spaces."
+        self.fields['username'].help_text = (
+            "Usernames must not contain spaces."
+        )
         self.fields['username'].required = True
 
     def save(self, request):
         user = super().save(request)
         return user
+
 
 class PostForm(forms.ModelForm):
     class Meta:
@@ -44,11 +46,10 @@ class PostForm(forms.ModelForm):
             }),
         }
         labels = {
-            'title': ' Title',
+            'title': 'Title',
             'content': 'Content',
             'category': 'Category',
         }
-
 
 
 class CommentForm(forms.ModelForm):
@@ -56,7 +57,7 @@ class CommentForm(forms.ModelForm):
         model = Comment
         fields = ['body']
         labels = {
-            'body': 'Your Comment', 
+            'body': 'Your Comment',
         }
         widgets = {
             'body': forms.Textarea(attrs={
@@ -65,5 +66,4 @@ class CommentForm(forms.ModelForm):
                 'class': 'form-control',
             })
         }
-
 

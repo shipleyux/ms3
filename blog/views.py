@@ -1,42 +1,15 @@
 # blog/views.py
-# 
-# This file contains all view functions for handling blog posts, comments, and user registration.
+#
+# This file contains all view functions for handling blog posts, comments,
+# and user registration.
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.core.paginator import Paginator
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
-from .models import Post
+from .models import Post, Category, Comment
 from .forms import PostForm, CommentForm
-from .models import Post, Category
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.views.generic import UpdateView, DeleteView
-from django.urls import reverse_lazy
-from .models import Comment
-from django.shortcuts import render
-
-class CommentEditView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-    model = Comment
-    fields = ['body']
-    template_name = 'blog/edit_comment.html'
-
-    def get_success_url(self):
-        return self.object.post.get_absolute_url()
-
-    def test_func(self):
-        return self.request.user == self.get_object().author
-
-
-class CommentDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-    model = Comment
-    template_name = 'blog/delete_comment.html'
-
-    def get_success_url(self):
-        return self.object.post.get_absolute_url()
-
-    def test_func(self):
-        return self.request.user == self.get_object().author
 
 
 def posts_by_category(request, category_id):
@@ -54,16 +27,13 @@ def posts_by_category(request, category_id):
     })
 
 
-
 def post_list(request):
     all_posts = Post.objects.all().order_by('-created_at')
     categories = Category.objects.all()
-
-    # Split into featured + others
     featured_post = all_posts.first()
-    post_list = all_posts[1:]  # everything except the first
+    post_list = all_posts[1:]
 
-    paginator = Paginator(post_list, 4) 
+    paginator = Paginator(post_list, 4)
     page_number = request.GET.get('page', 1)
     posts = paginator.get_page(page_number)
 
@@ -71,7 +41,7 @@ def post_list(request):
         'featured_post': featured_post,
         'posts': posts,
         'categories': categories,
-        'active_category': None
+        'active_category': None,
     })
 
 
@@ -88,11 +58,9 @@ def post_detail(request, pk):
         if comment_form.is_valid():
             new_comment = comment_form.save(commit=False)
             new_comment.post = post
-            new_comment.author = request.user 
+            new_comment.author = request.user
             new_comment.save()
-            # Redirect after saving to prevent form resubmission
             return redirect('post_detail', pk=post.pk)
-
     else:
         comment_form = CommentForm()
 
@@ -119,6 +87,7 @@ def post_create(request):
 
     return render(request, 'blog/post_form.html', {'form': form})
 
+
 @login_required
 def post_edit(request, pk):
     post = get_object_or_404(Post, pk=pk)
@@ -129,7 +98,7 @@ def post_edit(request, pk):
         form = PostForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user  #Ensure author is always set
+            post.author = request.user  # Ensure author is always set
             post.save()
             messages.success(request, "Post updated successfully!")
             return redirect('post_detail', pk=post.pk)
@@ -152,5 +121,31 @@ def post_delete(request, pk):
 
     return render(request, 'blog/post_confirm_delete.html', {'post': post})
 
+
 def handler404(request, exception):
     return render(request, '404.html', status=404)
+
+
+@login_required
+def edit_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.user != comment.author:
+        return redirect('post_detail', pk=comment.post.pk)
+
+    if request.method == 'POST':
+        form = CommentForm(request.POST, instance=comment)
+        if form.is_valid():
+            form.save()
+            return redirect('post_detail', pk=comment.post.pk)
+    else:
+        form = CommentForm(instance=comment)
+
+    return render(request, 'blog/edit_comment.html', {'form': form})
+
+
+@login_required
+def delete_comment(request, pk):
+    comment = get_object_or_404(Comment, pk=pk)
+    if request.user == comment.author:
+        comment.delete()
+    return redirect('post_detail', pk=comment.post.pk)
