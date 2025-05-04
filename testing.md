@@ -275,11 +275,11 @@ Lighthouse was run on the live site using Chrome DevTools to assess accessibilit
 | Metric        | Score Range (Out of 100) | Notes                                                         |
 |---------------|--------------------------|---------------------------------------------------------------|
 | Accessibility | 95–100                   | Strong use of alt text, labels, proper landmarks, and heading order. |
-| Performance   | 90–100                   | Optimized images, lazy loading, and minimal unused JS/CSS.    |
+| Performance   | 90–100                   | Optimised images, lazy loading, and minimal unused JS/CSS.    |
 | SEO           | 100                      | All pages include meta titles, descriptions, and semantic HTML. |
 | Best Practices| 100                      | Site uses HTTPS, avoids deprecated APIs, and passes audits.   |
 ---
-###  Performance Optimization: Removal of Post Images
+###  Performance Optimisation: Removal of Post Images
 
 To improve Lighthouse performance scores and ensure a faster, more accessible user experience, post images were removed from the blog listing page (`post_list.html`).
 
@@ -293,7 +293,7 @@ During testing, including images on every post caused several issues:
 -  Higher Cumulative Layout Shift (CLS)
 - Layout inconsistencies on mobile devices
 
-Even with lazy loading and Cloudinary optimizations, these image-heavy layouts significantly impacted performance.
+Even with lazy loading and Cloudinary optimisations, these image-heavy layouts significantly impacted performance.
 
 #### Result After Removal
 
