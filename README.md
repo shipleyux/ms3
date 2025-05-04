@@ -290,7 +290,6 @@ This approach ensures the application is readable, scalable, accessible and robu
 - **HTML Validation**: All HTML templates were passed through [W3C Validator](https://validator.w3.org/) and fixed for any structural issues.
 - **CSS Validation**: Stylesheets were tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) with no major warnings.
 - **Python Code Quality**: Code conforms to [PEP8](https://peps.python.org/pep-0008/) using `flake8` and VSCode extensions. 
-- **JavaScript**: Minor JavaScript (where used) was tested using [JSHint](https://jshint.com/).
 - **Lighthouse Testing**:
   - **Performance**: 
   - **Accessibility**: 
