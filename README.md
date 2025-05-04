@@ -98,7 +98,7 @@ This project serves a community of users who are interested in living alcohol-fr
 
 ---
 
-## Project Management
+## Project Management/Agile Delivery
 
 Project planning and task tracking were managed using the GitHub Projects board. The board was structured using columns **To Do**, **In Progress**, and **Done** to organise tasks effectively and ensure steady progress throughout development.
 
@@ -285,7 +285,7 @@ This approach ensures the application is readable, scalable, accessible and robu
 
 ##  Validation & Accessibility Testing
 
-> **INCLUDE SCREENSHOTS HERE!**
+[Read testing report.md](testing.md)
 
 - **HTML Validation**: All HTML templates were passed through [W3C Validator](https://validator.w3.org/) and fixed for any structural issues.
 - **CSS Validation**: Stylesheets were tested using [Jigsaw CSS Validator](https://jigsaw.w3.org/css-validator/) with no major warnings.

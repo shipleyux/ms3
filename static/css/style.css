@@ -117,3 +117,6 @@ main {
   margin-bottom: 0.5rem;
 }
 
+a[href*="reset"] {
+  display: none !important;
+}
