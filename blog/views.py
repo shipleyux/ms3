@@ -136,6 +136,7 @@ def edit_comment(request, pk):
         form = CommentForm(request.POST, instance=comment)
         if form.is_valid():
             form.save()
+            messages.success(request, "Comment updated successfully.")
             return redirect('post_detail', pk=comment.post.pk)
     else:
         form = CommentForm(instance=comment)
@@ -148,4 +149,6 @@ def delete_comment(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     if request.user == comment.author:
         comment.delete()
+        messages.success(request, "Comment deleted successfully.")
+
     return redirect('post_detail', pk=comment.post.pk)
