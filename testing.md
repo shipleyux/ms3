@@ -74,6 +74,18 @@ All HTML files were tested using the [W3C Markup Validator](https://validator.w3
 
 </details>
 
+<details>
+<summary><strong>✔ edit_comment.html</strong> – Passed</summary>
+
+**Notes:**
+- Form markup validated successfully.
+- Required fields are correctly labelled and accessible.
+
+**Status:** ✅ Pass
+
+<img src="docs/images/edit_comment_html.png" alt="Login HTML Test">>
+
+</details>
 
 
 
@@ -109,7 +121,6 @@ This site was tested using the WAVE Web Accessibility Evaluation Tool to help en
 
 All critical issues were resolved, including:
 
-- Making sure every image has alt text
 - Ensuring that every page has a proper heading structure (with one main heading)
 - Removing empty heading tags that were confusing for screen readers
 - Adding descriptive link text (like “Read more about this post”) where needed
@@ -160,14 +171,14 @@ The site now passes accessibility checks and offers a user-friendly experience a
 This is an intentional design decision to offer users multiple clear paths to registration, especially for mobile or first-time visitors and does not affect usability or accessibility.
 
 ---
-<img src="docs/images/login_wave.png" alt="Wave Test Homepage">
+<img src="docs/images/login_wave.png" alt="Wave Test Login">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility 404 Page Screenshots</strong></summary>
 
-<img src="docs/images/404_wave.png" alt="Wave Test Homepage">
+<img src="docs/images/404_wave.png" alt="Wave Test 404">
 
 </details>
 
@@ -178,21 +189,37 @@ This is an intentional design decision to offer users multiple clear paths to re
 
 
 <details>
-<summary><strong>View Lighthouse Test Screenshots</strong></summary>
+<summary><strong>Homepage Lighthouse Test Result</strong></summary>
 
-_Add screenshots here showing Lighthouse scores and reports for homepage and post pages._
+<img src="docs/images/homepage_lighthouse.png" alt="Homepage Lighthouse">
+
+</details>
+
+<details>
+
+<summary><strong>Post Detail Lighthouse Test Result</strong></summary>
+
+<img src="docs/images/post_detail_lighthouse.png" alt="Homepage Lighthouse">
+
+</details>
+
+<details>
+
+<summary><strong>Log In Test Result</strong></summary>
+
+<img src="docs/images/login_lighthouse.png" alt="Homepage Lighthouse">
 
 </details>
 
 
 Lighthouse was run on the live site using Chrome DevTools to assess accessibility, performance, SEO, and best practices. Results were consistent across multiple key pages.
 
-| Metric        | Score Range (Out of 100) | Notes                                                         |
-|---------------|--------------------------|---------------------------------------------------------------|
-| Accessibility | 95–100                   | Strong use of alt text, labels, proper landmarks, and heading order. |
-| Performance   | 90–100                   | Optimised images, lazy loading, and minimal unused JS/CSS.    |
-| SEO           | 100                      | All pages include meta titles, descriptions, and semantic HTML. |
-| Best Practices| 100                      | Site uses HTTPS, avoids deprecated APIs, and passes audits.   |
+| Metric        | Score Range (Out of 100) |
+|---------------|--------------------------|
+| Accessibility | 100                      | 
+| Performance   | 98                       | 
+| SEO           | 100                      | 
+| Best Practices| 100                      | 
 ---
 ###  Performance Optimisation: Removal of Post Images
 
@@ -212,10 +239,10 @@ Even with lazy loading and Cloudinary optimisations, these image-heavy layouts s
 
 #### Result After Removal
 
-- ✅ Lighthouse score improved to 96+ for Performance
-- ✅ CLS dropped close to 0
-- ✅ Page load time visibly improved on slow connections
-- ✅ Better consistency and layout stability across screen sizes
+-  Lighthouse score improved to 96+ for Performance
+-  CLS dropped close to 0
+-  Page load time visibly improved on slow connections
+-  Better consistency and layout stability across screen sizes
 
 Removing images was a tradeoff for performance and user experience. A clean, minimal layout was prioritized for clarity and readability, especially on mobile devices.
 

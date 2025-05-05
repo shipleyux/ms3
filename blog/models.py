@@ -56,5 +56,3 @@ class Comment(models.Model):
 
     def get_absolute_url(self):
         return self.post.get_absolute_url()
-
-
