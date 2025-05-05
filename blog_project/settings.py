@@ -75,7 +75,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'blog_project.wsgi.application'
 
 DATABASE_URL = os.environ.get("DATABASE_URL")
-print(f"DATABASE_URL is: {DATABASE_URL}")
+
 
 DATABASES = {
     'default': dj_database_url.parse(DATABASE_URL)
@@ -110,6 +110,7 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 

@@ -14,10 +14,7 @@ class CustomSignupForm(SignupForm):
 
     def save(self, request):
         user = super().save(request)
-        Profile = apps.get_model('blog', 'Profile')
-        Profile.objects.update_or_create(
-            user=user,
-            defaults={'display_name': self.cleaned_data['display_name']}
-        )
+       
+       
         return user
 

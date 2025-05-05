@@ -30,6 +30,3 @@ urlpatterns = [
 ]
 
 handler404 = 'blog.views.handler404'
-
-
-
