@@ -136,10 +136,12 @@ The diagram below shows how the main parts of the website's data are connected. 
 ## Figma Wireframes
 Early-stage wireframes were created in Figma to plan layout, structure, and user flow before development began. These helped define a clean, responsive design aligned with UX principles and guided the placement of key features like navigation, post layout, and form interactions.
 
-# Post List
+**Post List**
+
 <img src="docs/images/wireframes.png" alt="Figma wireframes" width="850"/>
 
-# Post Detail
+**Post Detail**
+
 <img src="docs/images/wireframes2.png" alt="Figma wireframes" width="850"/>
 
 ---
