@@ -70,7 +70,6 @@ This project serves a community of users who are interested in living alcohol-fr
 
 - Sign up and log in securely  
 - Create new blog posts  
-- Upload an image with each post  
 - Edit or delete my own posts  
 - See feedback when my actions succeed or fail  
 
@@ -80,7 +79,6 @@ This project serves a community of users who are interested in living alcohol-fr
 - Manage categories from the admin panel  
 - Ensure platform security and data integrity  
 
-> **INCLUDE SCREENSHOTS HERE!**
 ---
 
 ## Features
@@ -89,7 +87,6 @@ This project serves a community of users who are interested in living alcohol-fr
 - Create, edit & delete posts (authenticated users only)  
 - Categorised post filtering  
 - Featured "latest" post highlighted at the top  
-- Image upload per post  
 - Comment system 
 - Pagination for performance and UX  
 - Responsive layout with Bootstrap 5.3  
@@ -118,8 +115,6 @@ The diagram below illustrates the final data structure used in the app:
 
 <img src="docs/images/erd.png" alt="Blog ERD" width="500"/>
 
-[Download ERD (PNG)](docs/images/erd.png)
-
 ## Database Schema
 
 The diagram below shows how the main parts of the website's data are connected. Each blog post is written by a registered user and can belong to a category (like "Health" or “Travel”). Users can also leave comments on posts. Each comment is linked both to the post it’s about and to the user who wrote it. This structure keeps everything organised and makes it easy to manage content and users within the site.
@@ -136,7 +131,14 @@ The diagram below shows how the main parts of the website's data are connected. 
 - Navigation supports keyboard and screen readers  
 - Feedback messages on key actions (e.g. post created, login failed)  
 
-[View wireframes and design rationale on Figma](https://www.figma.com/) *ADD LINK HERE!!*
+## Figma Wireframes
+Early-stage wireframes were created in Figma to plan layout, structure, and user flow before development began. These helped define a clean, responsive design aligned with UX principles and guided the placement of key features like navigation, post layout, and form interactions.
+
+# Post List
+<img src="docs/images/wireframes.png" alt="Figma wireframes" width="850"/>
+
+# Post Detail
+<img src="docs/images/wireframes2.png" alt="Figma wireframes" width="850"/>
 
 ---
 
