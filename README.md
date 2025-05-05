@@ -277,7 +277,6 @@ This approach meets the specification’s requirement for robust error handling 
   - HTML validated via [W3C](https://validator.w3.org/)  
   - CSS validated via [Jigsaw](https://jigsaw.w3.org/css-validator/)  
   - Python code conforms to [PEP8](https://peps.python.org/pep-0008/)  
-  - JS (where used) tested using [JSHint](https://jshint.com/)  
   - Logic errors tested manually and addressed  
   - Input and upload errors handled gracefully  
 
