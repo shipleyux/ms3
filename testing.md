@@ -217,42 +217,49 @@ The site now passes accessibility checks and offers a user-friendly experience a
 <details>
 <summary><strong>View WAVE Accessibility Homepage Screenshots</strong></summary>
 
-<img src="docs/images/wave1.png" alt="Wave Test Homepage">
+<img src="docs/images/post_list_wave.png" alt="Wave Test Homepage">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility Post Detail Page Screenshots</strong></summary>
 
-<img src="docs/images/wave2.png" alt="Wave Test Homepage">
+<img src="docs/images/post_detail_wave.png" alt="Wave Test Homepage">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility Create Post Page Screenshots</strong></summary>
 
-<img src="docs/images/wave3.png" alt="Wave Test Homepage">
+<img src="docs/images/create_post_wave.png" alt="Wave Test Homepage">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility Sign Out Page Screenshots</strong></summary>
 
-<img src="docs/images/wave5.png" alt="Wave Test Homepage">
+<img src="docs/images/sign_out_wave.png" alt="Wave Test Homepage">
 
 </details>
+
 
 <details>
 <summary><strong>View WAVE Accessibility Login Page Screenshots</strong></summary>
 
-<img src="docs/images/wave4.png" alt="Wave Test Homepage">
+---
+ ⚠️ One alert flagged for "Redundant Links" on the login page. This occurred because both the navbar and login form contain a link to the signup page.
+  
+This is an intentional design decision to offer users multiple clear paths to registration, especially for mobile or first-time visitors and does not affect usability or accessibility.
+
+---
+<img src="docs/images/login_wave.png" alt="Wave Test Homepage">
 
 </details>
 
 <details>
 <summary><strong>View WAVE Accessibility 404 Page Screenshots</strong></summary>
 
-<img src="docs/images/wave6.png" alt="Wave Test Homepage">
+<img src="docs/images/404_wave.png" alt="Wave Test Homepage">
 
 </details>
 
