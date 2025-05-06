@@ -101,7 +101,7 @@ Project planning and task tracking were managed using the GitHub Projects board.
 
 Each issue or task was broken down into manageable items, including UI design, CRUD functionality, testing, and deployment.
 
-![GitHub Project Board Screenshot](https://github.com/user-attachments/assets/9f06527c-3ecd-4f42-82c7-a2a23da46a8d)
+<img src="docs/images/project_board.png" alt="Project board" width="900"/>
 
 ## Entity Relationship Diagram (ERD)
 
